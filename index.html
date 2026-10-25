@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Harshal Dixit — Java Backend Developer &amp; Computer Science Student</title>
+    <meta name="description"
+        content="Explore the projects, technical interests, and engineering journey of Harshal Dixit, a Computer Science undergraduate focused on Java backend development and problem-solving.">
+    <meta property="og:title" content="Harshal Dixit — Java Backend Developer &amp; Computer Science Student">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@500;700;800&display=swap">
+    <style>
+        :root {
+            --bg: #F7F5F0;
+            --tx: #20211F;
+            --mu: #5f5f5b;
+            --bd: #E4E1DA;
+            --ac: #426B55;
+            --sl: #61758A;
+            --hd: 'Manrope', system-ui, sans-serif;
+            --bo: 'Inter', system-ui, sans-serif;
+            --se: 'Instrument Serif', Georgia, serif;
+            --e: cubic-bezier(.22, .8, .24, 1);
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            color-scheme: light
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #141513;
+                --tx: #F0EFEA;
+                --mu: #AAA9A2;
+                --bd: #30312D;
+                --ac: #9DBFA9;
+                --sl: #9fb2c4;
+                color-scheme: dark
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #141513;
+            --tx: #F0EFEA;
+            --mu: #AAA9A2;
+            --bd: #30312D;
+            --ac: #9DBFA9;
+            --sl: #9fb2c4;
+            color-scheme: dark
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px))
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--tx);
+            font: 400 17px/1.65 var(--bo);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden
+        }
+
+        a {
+            color: inherit
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--ac);
+            outline-offset: 3px;
+            border-radius: 3px
+        }
+
+        .wrap {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: linear-gradient(var(--bg) 70%, transparent);
+            padding-top: env(safe-area-inset-top, 0px)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px
+        }
+
+        .brand {
+            font: 800 14px var(--hd);
+            letter-spacing: .12em;
+            text-decoration: none
+        }
+
+        .links {
+            display: flex;
+            gap: 28px
+        }
+
+        .links a {
+            font-size: 15px;
+            text-decoration: none;
+            color: var(--mu);
+            transition: color .3s
+        }
+
+        .links a:hover {
+            color: var(--tx)
+        }
+
+        .ib {
+            background: none;
+            border: 1px solid var(--bd);
+            color: var(--tx);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            cursor: pointer
+        }
+
+        .ib svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor
+        }
+
+        #menu {
+            display: none
+        }
+
+        @media (max-width:760px) {
+            #menu {
+                display: inline-grid
+            }
+
+            .links {
+                display: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                background: var(--bg);
+                flex-direction: column;
+                gap: 0;
+                padding: 8px 24px 16px
+            }
+
+            .links.open {
+                display: flex
+            }
+
+            .links a {
+                padding: 12px 0;
+                font-size: 17px
+            }
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--hd);
+            margin: 0;
+            line-height: 1.04;
+            letter-spacing: -.025em
+        }
+
+        h2 {
+            font-size: clamp(34px, 5.4vw, 68px);
+            font-weight: 800
+        }
+
+        h3 {
+            font-size: 21px;
+            font-weight: 700;
+            letter-spacing: -.01em
+        }
+
+        p {
+            margin: 0 0 1em;
+            max-width: 60ch
+        }
+
+        .mu {
+            color: var(--mu)
+        }
+
+        .ph {
+            font-style: italic;
+            color: var(--sl)
+        }
+
+        .lab {
+            font: 500 12px var(--bo);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--ac);
+            margin: 0 0 18px
+        }
+
+        section {
+            padding: 110px 0;
+            position: relative
+        }
+
+        @media (max-width:760px) {
+            section {
+                padding: 72px 0
+            }
+        }
+
+        /* masks */
+        .ln {
+            display: block;
+            overflow: hidden;
+            padding-bottom: .14em;
+            margin-bottom: -.14em
+        }
+
+        .ln>span {
+            display: block
+        }
+
+        /* hero */
+        .hero {
+            padding: 56px 0 130px;
+            min-height: 92vh;
+            display: flex;
+            align-items: center
+        }
+
+        .hgrid {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 64px;
+            align-items: center
+        }
+
+        @media (max-width:900px) {
+            .hgrid {
+                grid-template-columns: 1fr;
+                gap: 48px
+            }
+        }
+
+        h1 {
+            font-size: clamp(42px, 7.4vw, 96px);
+            font-weight: 800
+        }
+
+        h1 .l2 {
+            color: var(--mu);
+            font-weight: 500
+        }
+
+        .lead {
+            font-size: 20px;
+            color: var(--mu);
+            margin: 32px 0
+        }
+
+        .btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border-radius: 6px;
+            font: 700 15px var(--hd);
+            text-decoration: none;
+            border: 1px solid var(--bd);
+            transition: border-color .3s, background .3s
+        }
+
+        .btn.p {
+            background: var(--ac);
+            border-color: var(--ac);
+            color: var(--bg)
+        }
+
+        .btn:hover {
+            border-color: var(--tx)
+        }
+
+        @media (max-width:520px) {
+            .btn {
+                width: 100%;
+                text-align: center
+            }
+        }
+
+        .info {
+            margin-top: 36px;
+            font: 500 12px var(--bo);
+            letter-spacing: .14em;
+            color: var(--mu)
+        }
+
+        .portrait {
+            position: relative;
+            aspect-ratio: 5/6;
+            overflow: hidden;
+            max-width: 420px;
+            margin-left: auto
+        }
+
+        .portrait img,
+        .im img {
+            position: absolute;
+            left: 0;
+            top: -8%;
+            width: 100%;
+            height: 116%;
+            object-fit: cover;
+            display: block
+        }
+
+        .pwrap {
+            position: relative
+        }
+
+        .pwrap::before {
+            content: "";
+            position: absolute;
+            left: -28px;
+            top: 12%;
+            bottom: -40px;
+            width: 1px;
+            background: var(--ac);
+            opacity: .6
+        }
+
+        .now {
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--mu);
+            max-width: 34ch
+        }
+
+        .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--ac);
+            margin-right: 8px;
+            animation: pulse 2.4s ease-in-out infinite
+        }
+
+        @keyframes pulse {
+            50% {
+                opacity: .3
+            }
+        }
+
+        /* marquee line */
+        .mq {
+            overflow: hidden;
+            white-space: nowrap;
+            font: italic 400 clamp(60px, 12vw, 170px)/1 var(--se);
+            color: var(--bd);
+            padding: 0 0 20px;
+            user-select: none
+        }
+
+        .mq span {
+            display: inline-block;
+            will-change: transform
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 64px
+        }
+
+        @media (max-width:900px) {
+            .intro {
+                grid-template-columns: 1fr;
+                gap: 28px
+            }
+        }
+
+        /* projects */
+        .pj {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px 32px;
+            margin-top: 120px;
+            align-items: start
+        }
+
+        .pj:first-of-type {
+            margin-top: 72px
+        }
+
+        .pj .im {
+            grid-column: 1/8;
+            aspect-ratio: 16/10;
+            position: relative;
+            overflow: hidden
+        }
+
+        .pj .tx {
+            grid-column: 8/13
+        }
+
+        .pj.alt .im {
+            grid-column: 6/13;
+            grid-row: 1
+        }
+
+        .pj.alt .tx {
+            grid-column: 1/6;
+            grid-row: 1
+        }
+
+        .pj.type .tx {
+            grid-column: 6/13
+        }
+
+        .pj.type .big {
+            grid-column: 1/6
+        }
+
+        .pj.type.alt .tx {
+            grid-column: 1/8
+        }
+
+        .pj.type.alt .big {
+            grid-column: 8/13
+        }
+
+        .pj h3 {
+            font-size: clamp(44px, 7vw, 96px);
+            font-weight: 800;
+            letter-spacing: -.035em;
+            line-height: 1
+        }
+
+        .pj .big h3 {
+            color: var(--bd)
+        }
+
+        .pj dl {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 6px 24px;
+            margin: 20px 0;
+            font-size: 14px
+        }
+
+        .pj dt {
+            color: var(--mu)
+        }
+
+        .pj dd {
+            margin: 0
+        }
+
+        .on {
+            color: var(--ac)
+        }
+
+        details {
+            border-top: 1px solid var(--bd);
+            padding: 14px 0;
+            margin-top: 16px
+        }
+
+        summary {
+            cursor: pointer;
+            font: 700 15px var(--hd)
+        }
+
+        details ul {
+            margin: 12px 0 4px;
+            padding-left: 20px;
+            color: var(--mu);
+            font-size: 15px
+        }
+
+        @media (max-width:900px) {
+            .pj {
+                display: block
+            }
+
+            .pj .im {
+                margin-bottom: 24px
+            }
+
+            .pj .big {
+                display: none
+            }
+        }
+
+        .exp {
+            margin-top: 120px;
+            max-width: 640px
+        }
+
+        .serif {
+            font: 400 clamp(30px, 4vw, 48px)/1.1 var(--se)
+        }
+
+        /* approach + skills rows */
+        .row {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 32px;
+            padding: 28px 0;
+            position: relative
+        }
+
+        .row::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 1px;
+            background: var(--bd);
+            transform-origin: left
+        }
+
+        .row h3 {
+            font-size: 19px
+        }
+
+        .row p {
+            margin: 0;
+            color: var(--mu)
+        }
+
+        @media (max-width:760px) {
+            .row {
+                grid-template-columns: 1fr;
+                gap: 8px
+            }
+        }
+
+        .key {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 24px;
+            margin: 20px 0 40px;
+            font-size: 14px;
+            color: var(--mu)
+        }
+
+        .ring {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border: 1.5px solid var(--ac);
+            border-radius: 50%;
+            margin-right: 8px
+        }
+
+        .lr {
+            margin-top: 48px
+        }
+
+        /* timeline */
+        .tl {
+            position: relative;
+            margin-top: 64px;
+            padding-left: 36px
+        }
+
+        .tl::before,
+        .tl i {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--bd)
+        }
+
+        .tl i {
+            background: var(--ac);
+            bottom: auto;
+            height: 100%;
+            transform-origin: top;
+            transform: scaleY(var(--t, 1))
+        }
+
+        .ms {
+            position: relative;
+            padding-bottom: 56px
+        }
+
+        .ms::before {
+            content: "";
+            position: absolute;
+            left: -41px;
+            top: 10px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--ac)
+        }
+
+        .ms strong {
+            font: 800 clamp(24px, 3vw, 34px) var(--hd);
+            letter-spacing: -.02em;
+            display: block
+        }
+
+        .ms span {
+            display: block;
+            color: var(--mu);
+            font-size: 15px
+        }
+
+        @media (min-width:900px) {
+            .tl {
+                padding-left: 0
+            }
+
+            .tl::before,
+            .tl i {
+                left: 50%
+            }
+
+            .ms {
+                width: 50%;
+                padding: 0 56px 64px 0;
+                text-align: right
+            }
+
+            .ms::before {
+                left: auto;
+                right: -5px
+            }
+
+            .ms:nth-of-type(even) {
+                margin-left: 50%;
+                padding: 0 0 64px 56px;
+                text-align: left
+            }
+
+            .ms:nth-of-type(even)::before {
+                right: auto;
+                left: -5px
+            }
+        }
+
+        /* contact */
+        .ct {
+            background: linear-gradient(to bottom, var(--bg) 0, #141513 260px);
+            color: #F0EFEA;
+            padding-top: 240px;
+            margin-top: -120px
+        }
+
+        .ct .lab {
+            color: #9DBFA9
+        }
+
+        .ct .mu {
+            color: #AAA9A2
+        }
+
+        .ct h2 {
+            font-size: clamp(40px, 8vw, 112px)
+        }
+
+        .mail {
+            display: inline-block;
+            font: 800 clamp(22px, 4vw, 44px) var(--hd);
+            letter-spacing: -.02em;
+            word-break: break-all;
+            margin-top: 40px;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 8px
+        }
+
+        .soc {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+            margin-top: 28px;
+            font-size: 15px
+        }
+
+        footer {
+            background: #141513;
+            color: #AAA9A2;
+            padding: 48px 0;
+            font-size: 14px
+        }
+
+        footer .wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px
+        }
+
+        footer b {
+            font: 800 13px var(--hd);
+            letter-spacing: .12em;
+            color: #F0EFEA
+        }
+
+        /* motion: only when JS ran and motion is allowed */
+        .mo .rv {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity .8s var(--e), transform .8s var(--e);
+            transition-delay: calc(var(--i, 0)*70ms)
+        }
+
+        .mo .rv.in {
+            opacity: 1;
+            transform: none
+        }
+
+        .mo .ln>span {
+            transform: translateY(108%);
+            transition: transform 1s var(--e);
+            transition-delay: calc(var(--i, 0)*110ms + var(--d, 0ms))
+        }
+
+        .mo .in .ln>span,
+        .mo .ln.in>span,
+        .mo.ld .hero .ln>span {
+            transform: none
+        }
+
+        .mo .lab {
+            opacity: 0;
+            letter-spacing: .3em;
+            transition: opacity .8s var(--e), letter-spacing 1s var(--e)
+        }
+
+        .mo .lab.in,
+        .mo.ld .hero .lab {
+            opacity: 1;
+            letter-spacing: .14em
+        }
+
+        .mo .im,
+        .mo .portrait {
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 1.2s var(--e)
+        }
+
+        .mo .im.in,
+        .mo .portrait.in,
+        .mo.ld .portrait {
+            clip-path: inset(0)
+        }
+
+        .mo .row::before {
+            transform: scaleX(0);
+            transition: transform 1.1s var(--e)
+        }
+
+        .mo .row.in::before {
+            transform: none
+        }
+
+        .mo .hero .rv {
+            transition-delay: calc(.55s + var(--i, 0)*90ms)
+        }
+
+        .mo:not(.ld) .hero .rv {
+            opacity: 0
+        }
+
+        .mo.ld .hero .rv {
+            opacity: 1;
+            transform: none
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto
+            }
+
+            .dot {
+                animation: none
+            }
+        }
+
+        /* ── Technical taxonomy: tag-chip layout ── */
+        .tx-num {
+            display: block;
+            font: 500 11px var(--bo);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--ac);
+            margin: 0 0 10px
+        }
+
+        .tx-meta .tx-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 8px;
+            max-width: 30ch
+        }
+
+        .tx-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-content: flex-start;
+            padding-top: 2px
+        }
+
+        .tx-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 11px;
+            border: 1px solid var(--bd);
+            border-radius: 4px;
+            font: 500 12.5px var(--bo);
+            color: var(--tx);
+            letter-spacing: .01em;
+            line-height: 1
+        }
+
+        .tx-tag::before {
+            content: "";
+            display: inline-block;
+            flex-shrink: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 1.5px;
+            background: var(--ac)
+        }
+
+        .tx-tag.learn::before {
+            background: none;
+            border: 1.5px solid var(--ac);
+            border-radius: 50%;
+            width: 7px;
+            height: 7px
+        }
+
+        .tx-tag.explore {
+            color: var(--mu)
+        }
+
+        .tx-tag.explore::before {
+            display: none
+        }
+
+        @media (max-width:760px) {
+            .tx-tags {
+                margin-top: 4px
+            }
+        }
+
+        /* ── Engineering Approach: step labels, ghost numbers, hover ── */
+        .ap-rows {
+            counter-reset: ap-step
+        }
+
+        .ap-rows .row {
+            counter-increment: ap-step;
+            transition: box-shadow .4s var(--e), background-color .4s var(--e)
+        }
+
+        /* hover: inset left accent bar + soft background tint */
+        .ap-rows .row:hover {
+            box-shadow: inset 3px 0 0 var(--ac);
+            background-color: color-mix(in srgb, var(--ac) 5%, var(--bg))
+        }
+
+        /* hover: h3 picks up accent colour */
+        .ap-rows .row h3 {
+            transition: color .3s var(--e)
+        }
+
+        .ap-rows .row:hover h3 {
+            color: var(--ac)
+        }
+
+        /* numbered step label — slides in from the left on scroll reveal */
+        .ap-rows .row h3::before {
+            content: "0" counter(ap-step);
+            display: block;
+            font: 800 11px var(--hd);
+            letter-spacing: .22em;
+            color: var(--ac);
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateX(-12px);
+            transition: opacity .7s var(--e), transform .7s var(--e)
+        }
+
+        .mo .ap-rows .row.in h3::before {
+            opacity: 1;
+            transform: none
+        }
+
+        /* large ghost watermark number — barely-there in background */
+        .ap-rows .row::after {
+            content: "0" counter(ap-step);
+            position: absolute;
+            right: 0;
+            bottom: -2px;
+            font: 800 92px var(--hd);
+            letter-spacing: -.04em;
+            color: var(--ac);
+            opacity: 0;
+            pointer-events: none;
+            user-select: none;
+            line-height: 1;
+            transition: opacity .9s var(--e), transform .9s var(--e);
+            transform: translateY(8px)
+        }
+
+        .mo .ap-rows .row.in::after {
+            opacity: .055;
+            transform: none
+        }
+
+        /* hover: ghost number lifts slightly */
+        .ap-rows .row:hover::after {
+            opacity: .13;
+            transition: opacity .3s
+        }
+
+        /* staggered entrance — step labels */
+        .ap-rows .row:nth-child(1) h3::before { transition-delay: 0s }
+        .ap-rows .row:nth-child(2) h3::before { transition-delay: .15s }
+        .ap-rows .row:nth-child(3) h3::before { transition-delay: .30s }
+
+        /* staggered entrance — ghost numbers */
+        .ap-rows .row:nth-child(1)::after { transition-delay: 0s }
+        .ap-rows .row:nth-child(2)::after { transition-delay: .15s }
+        .ap-rows .row:nth-child(3)::after { transition-delay: .30s }
+
+        /* staggered entrance — border-top line */
+        .ap-rows .row:nth-child(1)::before { transition-delay: 0s }
+        .ap-rows .row:nth-child(2)::before { transition-delay: .10s }
+        .ap-rows .row:nth-child(3)::before { transition-delay: .20s }
+
+        /* ── Direct message card ── */
+        .msg-card {
+            margin-top: 60px;
+            max-width: 480px;
+            border: 1px solid rgba(240,239,234,.1);
+            border-radius: 10px;
+            padding: 36px 40px;
+            background: rgba(255,255,255,.03)
+        }
+
+        .msg-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #F0EFEA;
+            margin: 0 0 8px;
+            letter-spacing: -.015em
+        }
+
+        .msg-card > p {
+            font-size: 14px;
+            color: #AAA9A2;
+            margin: 0 0 28px;
+            max-width: 44ch;
+            line-height: 1.6
+        }
+
+        .msg-label {
+            display: block;
+            font: 700 11px var(--hd);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #9DBFA9;
+            margin-bottom: 8px
+        }
+
+        .msg-input {
+            display: block;
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(240,239,234,.12);
+            border-radius: 4px;
+            padding: 11px 14px;
+            color: #F0EFEA;
+            font: 400 15px var(--bo);
+            outline: none;
+            transition: border-color .25s;
+            margin-bottom: 20px;
+            -webkit-appearance: none
+        }
+
+        .msg-input::placeholder {
+            color: rgba(240,239,234,.25)
+        }
+
+        .msg-input:focus {
+            border-color: #9DBFA9
+        }
+
+        textarea.msg-input {
+            resize: vertical;
+            min-height: 104px;
+            line-height: 1.6
+        }
+
+        .msg-btn {
+            width: 100%;
+            padding: 14px;
+            background: #F0EFEA;
+            color: #141513;
+            border: none;
+            border-radius: 4px;
+            font: 700 12px var(--hd);
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 4px;
+            transition: background .2s, transform .15s;
+            -webkit-appearance: none
+        }
+
+        .msg-btn:hover { background: #fff }
+        .msg-btn:active { transform: scale(.98) }
+
+        @media (max-width:520px) {
+            .msg-card { padding: 28px 20px }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap nav">
+            <a class="brand" href="#top">HARSHAL DIXIT</a>
+            <nav class="links" id="links" aria-label="Primary"><a href="#about">About</a><a
+                    href="#projects">Projects</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a
+                    href="#contact">Contact</a></nav>
+            <div style="display:flex;gap:8px">
+                <button class="ib" id="theme" aria-label="Toggle dark theme"><svg viewBox="0 0 24 24"
+                        aria-hidden="true">
+                        <path d="M21 13.5A9 9 0 0 1 10.5 3a9 9 0 1 0 10.5 10.5z" />
+                    </svg></button>
+                <button class="ib" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="links"><svg
+                        viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+                    </svg></button>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="wrap hgrid">
+                <div>
+                    <div data-h="0.1" data-f="1.2">
+                        <p class="lab">Computer Science undergraduate · GCET</p>
+                    </div>
+                    <div data-h="0.28" data-f="0.7">
+                        <h1><span class="ln" style="--d:250ms"><span>Building systems.</span></span><span class="ln l2"
+                                style="--d:380ms"><span>Understanding what makes them work.</span></span></h1>
+                    </div>
+                    <div data-h="0.16" data-f="1.1">
+                        <p class="lead rv" style="--i:0">I'm Harshal Dixit, a Computer Science undergraduate focused on
+                            Java backend development, databases, and problem-solving. I enjoy turning ideas into working
+                            software and learning the engineering principles behind it.</p>
+                        <div class="btns"><a class="btn p rv" style="--i:1" href="#projects">Explore my work</a><a
+                                class="btn rv" style="--i:2" href="#contact">Get in touch</a></div>
+                        <div class="info rv" style="--i:3">JAVA · BACKEND ENGINEERING · PROBLEM-SOLVING</div>
+                    </div>
+                </div>
+                <div data-h="-0.06">
+                    <div class="pwrap">
+                        <div class="portrait"><img src="portrait.jpg"
+                                alt="Black and white portrait of Harshal Dixit looking up and away, with motion blur around him"
+                                data-par="0.05" width="860" height="1016" fetchpriority="high"></div>
+                        <p class="now rv" style="--i:4"><span class="dot"></span>Building Threadline, learning Redis,
+                            Kafka and Spring Security alongside it. Learning focus, not shipped features.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="mq" aria-hidden="true"><span data-x="0.35">Java &nbsp;·&nbsp; Spring Boot &nbsp;·&nbsp; PostgreSQL
+                &nbsp;·&nbsp; Problem-solving &nbsp;·&nbsp; Java</span></div>
+
+        <section id="about" style="padding-top:60px">
+            <div class="wrap intro">
+                <h2 class="hd">A little about<br>how I work.</h2>
+                <div>
+                    <p class="rv">I'm currently studying Computer Science at GCET and building my foundation in Java,
+                        backend development, and database systems.</p>
+                    <p class="rv" style="--i:1">I learn by exploring concepts, building projects, solving problems, and
+                        gradually improving the way I approach software. I'm particularly interested in understanding
+                        how applications work beneath the interface: how data is modelled, APIs are designed, and
+                        systems remain reliable as their complexity grows.</p>
+                    <p class="rv" style="--i:2">I'm still early in my engineering journey, and I see that as an
+                        opportunity to build strong fundamentals rather than rush through technologies without
+                        understanding them.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="wrap">
+                <p class="lab">Selected projects</p>
+                <h2 class="hd">What I've built,<br>and what's still unfinished.</h2>
+
+                <article class="pj">
+                    <div class="im"><img src="aquila.jpg"
+                            alt="Aquila home page: the headline 'Breathe better. Live lighter.' beside an illustrated tree on a pale green background"
+                            data-par="0.07" width="1200" height="661" loading="lazy"></div>
+                    <div class="tx">
+                        <h3 class="hd">Aquila</h3>
+                        <dl class="rv">
+                            <dt>Category</dt>
+                            <dd>Sustainability Technology</dd>
+                            <dt>Status</dt>
+                            <dd class="ph">to be confirmed</dd>
+                        </dl>
+                        <p class="rv" style="--i:1">A sustainability-focused project exploring how software can help
+                            people understand their carbon footprint and engage with environmental impact.</p>
+                        <p class="rv" style="--i:2"><a href="https://aquilaa.netlify.app/" target="_blank"
+                                rel="noopener">Visit the live project ↗</a></p>
+                        <details class="rv" style="--i:3">
+                            <summary>Case study</summary>
+                            <ul>
+                                <li class="ph">The idea: to be written</li>
+                                <li class="ph">Implementation (features, data sources, calculations): to be verified
+                                </li>
+                                <li class="ph">My contribution, lessons, next steps: to be written</li>
+                            </ul>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="pj type alt">
+                    <div class="tx">
+                        <dl class="rv">
+                            <dt>Category</dt>
+                            <dd>Application Development</dd>
+                            <dt>Status</dt>
+                            <dd class="on">Completed</dd>
+                        </dl>
+                        <p class="rv" style="--i:1">A completed software project developed to explore a practical
+                            problem through an interactive application.</p>
+                        <details class="rv" style="--i:2">
+                            <summary>Case study</summary>
+                            <ul>
+                                <li class="ph">Problem, users, functionality: to be filled after repository review</li>
+                                <li class="ph">Architecture, technologies, my contribution: to be confirmed</li>
+                            </ul>
+                        </details>
+                    </div>
+                    <div class="big">
+                        <h3 class="hd">ShiftProp</h3>
+                    </div>
+                </article>
+                <article class="pj type">
+                    <div class="big">
+                        <h3 class="hd">Thread&shy;line</h3>
+                    </div>
+                    <div class="tx">
+                        <dl class="rv">
+                            <dt>Category</dt>
+                            <dd>Software Engineering</dd>
+                            <dt>Status</dt>
+                            <dd class="on">In progress</dd>
+                        </dl>
+                        <p class="rv" style="--i:1">An ongoing project through which I'm developing my approach to
+                            application architecture, implementation, and maintainable software.</p>
+                        <details class="rv" style="--i:2">
+                            <summary>Case study</summary>
+                            <ul>
+                                <li class="ph">Purpose and intended solution: to be written</li>
+                                <li class="ph">Implemented features and decisions: to be listed as they ship. Redis,
+                                    Kafka and Spring Security appear only once integrated.</li>
+                            </ul>
+                        </details>
+                    </div>
+                </article>
+                <article class="pj type alt">
+                    <div class="tx">
+                        <dl class="rv">
+                            <dt>Category</dt>
+                            <dd>Hackathon project concept</dd>
+                            <dt>Outcome</dt>
+                            <dd class="ph">to be confirmed</dd>
+                        </dl>
+                        <p class="rv" style="--i:1">A hackathon concept focused on emergency communication when cellular
+                            infrastructure becomes unavailable. The proposed design combined an offline node, a bridge
+                            node, a backend, a dashboard and AI-assisted triage.</p>
+                        <details class="rv" style="--i:2">
+                            <summary>Case study</summary>
+                            <ul>
+                                <li class="ph">Proposed architecture versus what was actually built: to be separated
+                                </li>
+                                <li class="ph">My database-related responsibilities: to be confirmed</li>
+                            </ul>
+                        </details>
+                    </div>
+                    <div class="big">
+                        <h3 class="hd">SmartMesh</h3>
+                    </div>
+                </article>
+
+                <div class="exp">
+                    <h3 class="serif hd">Small experiments.<br>Stronger foundations.</h3>
+                    <p class="mu rv" style="margin-top:20px">Not every project needs to become a product. Some exist to
+                        understand a concept, test an idea, or become better at solving problems.</p>
+                    <p class="ph rv">Repository links for data-structure implementations will be added once verified.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <p class="lab">Engineering approach</p>
+                <h2 class="hd">How I approach<br>building software.</h2>
+                <div class="ap-rows" style="margin-top:56px">
+                    <div class="row rv" style="--i:0">
+                        <h3>Understand the problem</h3>
+                        <p>I want to understand what a system needs to do before deciding how to build it.</p>
+                    </div>
+                    <div class="row rv" style="--i:1">
+                        <h3>Learn through implementation</h3>
+                        <p>I use projects and experiments to connect concepts with working software.</p>
+                    </div>
+                    <div class="row rv" style="--i:2">
+                        <h3>Improve the engineering</h3>
+                        <p>I'm working toward writing code that is easier to understand, test, debug, and maintain.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="wrap">
+                <p class="lab">Technical skills</p>
+                <h2 class="hd">What I can use, what I'm learning,<br>what's next.</h2>
+                <div class="key"><span>Working knowledge, listed plainly</span><span><i
+                            class="ring"></i>Learning</span><span>Exploring next, listed last</span></div>
+                <p class="ph" style="font-size:15px">Draft classification, pending my review before publishing.</p>
+                <div class="lr">
+                    <div class="row">
+                        <div class="tx-meta">
+                            <span class="tx-num">01 / Group</span>
+                            <h3>Java and foundations</h3>
+                            <p class="tx-desc">Core languages and algorithmic reasoning that form the foundation of my development.</p>
+                        </div>
+                        <div class="tx-tags">
+                            <span class="tx-tag">Java</span>
+                            <span class="tx-tag">Object-Oriented Programming</span>
+                            <span class="tx-tag">Collections Framework</span>
+                            <span class="tx-tag">Exception Handling</span>
+                            <span class="tx-tag">Arrays &amp; Strings</span>
+                            <span class="tx-tag">Recursion</span>
+                            <span class="tx-tag">Data Structures &amp; Algorithms</span>
+                            <span class="tx-tag">C Fundamentals</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tx-meta">
+                            <span class="tx-num">02 / Group</span>
+                            <h3>Java backend</h3>
+                            <p class="tx-desc">Enterprise framework tools and server-side components for building web services.</p>
+                        </div>
+                        <div class="tx-tags">
+                            <span class="tx-tag">Spring Boot</span>
+                            <span class="tx-tag">Spring Web MVC</span>
+                            <span class="tx-tag">REST APIs</span>
+                            <span class="tx-tag">JDBC</span>
+                            <span class="tx-tag">Hibernate</span>
+                            <span class="tx-tag">JPA</span>
+                            <span class="tx-tag">Maven</span>
+                            <span class="tx-tag">Dependency Injection</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tx-meta">
+                            <span class="tx-num">03 / Group</span>
+                            <h3>Databases</h3>
+                            <p class="tx-desc">Relational database management, data normalization, and query design.</p>
+                        </div>
+                        <div class="tx-tags">
+                            <span class="tx-tag">PostgreSQL</span>
+                            <span class="tx-tag">SQL</span>
+                            <span class="tx-tag">Relational Concepts</span>
+                            <span class="tx-tag">Database Normalization</span>
+                            <span class="tx-tag">Transactions &amp; ACID</span>
+                            <span class="tx-tag">Database Connectivity</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tx-meta">
+                            <span class="tx-num">04 / Group</span>
+                            <h3>Tools</h3>
+                            <p class="tx-desc">Workstation utilities, version control, and containerization environments.</p>
+                        </div>
+                        <div class="tx-tags">
+                            <span class="tx-tag">Git</span>
+                            <span class="tx-tag">GitHub</span>
+                            <span class="tx-tag">IntelliJ IDEA</span>
+                            <span class="tx-tag">Docker</span>
+                            <span class="tx-tag">Postman</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tx-meta">
+                            <span class="tx-num">05 / Group</span>
+                            <h3>Security</h3>
+                            <p class="tx-desc">Authentication, authorization, and securing web APIs.</p>
+                        </div>
+                        <div class="tx-tags">
+                            <span class="tx-tag learn">Spring Security</span>
+                            <span class="tx-tag learn">JWT</span>
+                            <span class="tx-tag learn">OAuth 2.0</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tx-meta">
+                            <span class="tx-num">06 / Group</span>
+                            <h3>Learning now</h3>
+                            <p class="tx-desc">Active areas of continuous technical study and experimental implementation.</p>
+                        </div>
+                        <div class="tx-tags">
+                            <span class="tx-tag learn">Redis</span>
+                            <span class="tx-tag learn">Apache Kafka</span>
+                            <span class="tx-tag learn">Advanced Spring Security</span>
+                            <span class="tx-tag learn">Containerization &amp; Deployment</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tx-meta">
+                            <span class="tx-num">07 / Group</span>
+                            <h3>Exploring next</h3>
+                            <p class="tx-desc">Technologies at the edge of my current focus, for future study.</p>
+                        </div>
+                        <div class="tx-tags">
+                            <span class="tx-tag explore">JUnit &amp; Mockito</span>
+                            <span class="tx-tag explore">CI/CD</span>
+                            <span class="tx-tag explore">GitHub Actions</span>
+                            <span class="tx-tag explore">Linux &amp; Bash</span>
+                            <span class="tx-tag explore">System Design</span>
+                            <span class="tx-tag explore">Cloud Deployment</span>
+                            <span class="tx-tag explore">Distributed Systems</span>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="serif hd" style="margin-top:96px">Thinking in problems.<br>Growing through practice.</h3>
+                <p class="mu rv" style="margin-top:20px">Alongside project development, I practise Data Structures and
+                    Algorithms to improve my problem-solving skills, understand algorithmic trade-offs, and write more
+                    effective solutions.</p>
+                <div class="row">
+                    <h3>LeetCode</h3>
+                    <p class="ph">Profile link and verified problem count to be added.</p>
+                </div>
+                <div class="row">
+                    <h3>Codeforces</h3>
+                    <p class="ph">Profile link and verified rating to be added.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey">
+            <div class="wrap">
+                <p class="lab">Education and hackathons</p>
+                <h2 class="hd">Where I study,<br>and where I've built under pressure.</h2>
+                <div class="tl" id="tl"><i></i>
+                    <div class="ms rv"><strong>B.Tech, Computer Science and Engineering</strong><span>GCET · currently
+                            pursuing, second year</span></div>
+                    <div class="ms rv"><strong>Intermediate / Class XII</strong><span>94.4%</span></div>
+                    <div class="ms rv"><strong>High School / Class X</strong><span>96.6%</span></div>
+                    <div class="ms rv"><strong>Smart India Hackathon 2025</strong><span>Team Deploy-It · JalDrishti, an
+                            AI-powered water body monitoring and restoration platform</span><span class="ph">Role and
+                            outcome: to be added</span></div>
+                </div>
+                <p class="mu rv" style="max-width:56ch;margin-top:8px">Hackathons have given me opportunities to
+                    collaborate, explore real-world problems, develop software ideas, and communicate technical
+                    solutions under time constraints.</p>
+                <div class="row" style="margin-top:64px">
+                    <h3>Notes from the process</h3>
+                    <p class="mu">No articles yet. Short technical notes on Spring, database design and debugging will
+                        appear here when they exist.</p>
+                </div>
+                <div class="row">
+                    <h3>Curiosity doesn't stop at code</h3>
+                    <p class="mu">I'm interested in the broader relationship between technology, people, and the systems
+                        we build: AI, sustainability, automation, scientific topics, and the effects of digital
+                        technology on human attention.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="ct">
+            <div class="wrap">
+                <p class="lab">Contact</p>
+                <h2 class="hd">Have something<br>interesting in mind?</h2>
+                <p class="mu rv" style="margin-top:28px">I'm interested in meaningful projects, internship
+                    opportunities, open-source contributions, and conversations about backend engineering and software
+                    development.</p>
+                <a class="mail rv" style="--i:1" href="mailto:harshaldixit174@gmail.com">harshaldixit174@gmail.com</a>
+                <p class="mu rv" style="--i:2;margin:12px 0 0">+91 63939 32169</p>
+                <div class="soc rv" style="--i:3"><span class="ph">GitHub, LinkedIn, LeetCode and Codeforces links: to
+                        be added once supplied</span></div>
+
+                <div class="msg-card rv" style="--i:4">
+                    <h3>Send a direct message</h3>
+                    <p>Fill out the note below to open your preferred mail client with a formatted message.</p>
+
+                    <label class="msg-label" for="senderName">Your Name</label>
+                    <input class="msg-input" type="text" id="senderName" placeholder="e.g. Jane Doe" autocomplete="name">
+
+                    <label class="msg-label" for="senderEmail">Your Email</label>
+                    <input class="msg-input" type="email" id="senderEmail" placeholder="e.g. jane@example.com" autocomplete="email">
+
+                    <label class="msg-label" for="msgText">Message</label>
+                    <textarea class="msg-input" id="msgText" placeholder="Tell me about your project, idea, or role..."></textarea>
+
+                    <button class="msg-btn" id="composeBtn" type="button">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        Compose &amp; Open Email
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap">
+            <div><b>HARSHAL DIXIT</b><br>Building, learning, and understanding one system at a time.</div>
+            <div><a href="mailto:harshaldixit174@gmail.com">Email</a><br>© <span id="yr"></span> Harshal Dixit</div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var d = document, root = d.documentElement, R = matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var tb = d.getElementById('theme'), mb = d.getElementById('menu'), ln = d.getElementById('links');
+            try { var s = localStorage.getItem('theme'); if (s) root.setAttribute('data-theme', s) } catch (e) { }
+            tb.addEventListener('click', function () { var c = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'), n = c === 'dark' ? 'light' : 'dark'; root.setAttribute('data-theme', n); try { localStorage.setItem('theme', n) } catch (e) { } });
+            function close() { ln.classList.remove('open'); mb.setAttribute('aria-expanded', 'false') }
+            mb.addEventListener('click', function () { mb.setAttribute('aria-expanded', ln.classList.toggle('open')) });
+            ln.addEventListener('click', function (e) { if (e.target.tagName === 'A') close() });
+            d.addEventListener('keydown', function (e) { if (e.key === 'Escape') close() });
+            d.getElementById('yr').textContent = new Date().getFullYear();
+            if (R || !('IntersectionObserver' in window)) return;
+            /* split headings into masked lines at <br> */
+            [].forEach.call(d.querySelectorAll('.hd'), function (h) {
+                if (h.querySelector('.ln')) return;
+                h.innerHTML = h.innerHTML.split(/<br\s*\/?>/).map(function (t, i) { return '<span class="ln" style="--i:' + i + '"><span>' + t + '</span></span>' }).join('')
+            });
+            var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }) }, { threshold: .15, rootMargin: '0px 0px -6% 0px' });
+            [].forEach.call(d.querySelectorAll('.rv,.lab,.im,.row,.hd,.exp .serif'), function (e) { if (!e.closest('.hero') || e.classList.contains('lab') === false && !e.closest('.hero')) io.observe(e) });
+            root.classList.add('mo');
+            requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('ld') }) });
+            /* scroll-linked layer: one rAF-throttled handler, transforms only */
+            var par = [].slice.call(d.querySelectorAll('[data-par]')), hh = [].slice.call(d.querySelectorAll('[data-h]')), mq = d.querySelector('[data-x]'), tl = d.getElementById('tl'), busy = false;
+            function clamp(v) { return Math.max(0, Math.min(1, v)) }
+            function upd() {
+                busy = false; var vh = innerHeight, y = scrollY, k = innerWidth < 760 ? .4 : 1, p = clamp(y / (vh * .8));
+                hh.forEach(function (e) { e.style.transform = 'translate3d(0,' + (-y * e.dataset.h * k).toFixed(1) + 'px,0)'; e.style.opacity = (1 - p * (e.dataset.f || 0)).toFixed(3) });
+                par.forEach(function (e) {
+                    var r = e.parentNode.getBoundingClientRect(); if (r.bottom < -100 || r.top > vh + 100) return;
+                    e.style.transform = 'translate3d(0,' + ((r.top + r.height / 2 - vh / 2) * e.dataset.par * k).toFixed(1) + 'px,0)'
+                });
+                if (mq) { var r = mq.parentNode.getBoundingClientRect(); if (r.bottom > 0 && r.top < vh) mq.style.transform = 'translate3d(' + (-(vh - r.top) * mq.dataset.x * k).toFixed(1) + 'px,0,0)' }
+                if (tl) { var t = tl.getBoundingClientRect(); tl.style.setProperty('--t', clamp((vh * .65 - t.top) / t.height).toFixed(3)) }
+            }
+            addEventListener('scroll', function () { if (!busy) { busy = true; requestAnimationFrame(upd) } }, { passive: true });
+            addEventListener('resize', upd); upd();
+            /* fail-safe: never leave content hidden */
+            setTimeout(function () { [].forEach.call(d.querySelectorAll('.rv,.lab,.im,.row,.hd,.exp .serif'), function (e) { var r = e.getBoundingClientRect(); if (r.top < innerHeight) e.classList.add('in') }) }, 2500);
+        })();
+    </script>
+    <script>
+        document.getElementById('composeBtn').addEventListener('click', function () {
+            var name = (document.getElementById('senderName').value || '').trim();
+            var email = (document.getElementById('senderEmail').value || '').trim();
+            var msg  = (document.getElementById('msgText').value  || '').trim();
+            var subject = name ? 'Message from ' + name : 'Portfolio inquiry';
+            var body = (name  ? 'Name: '     + name  + '\n' : '')
+                     + (email ? 'Reply-to: ' + email + '\n' : '')
+                     + '\n' + msg;
+            window.location.href = 'mailto:harshaldixit174@gmail.com'
+                + '?subject=' + encodeURIComponent(subject)
+                + '&body='    + encodeURIComponent(body);
+        });
+    </script>
+</body>
+
+</html>
